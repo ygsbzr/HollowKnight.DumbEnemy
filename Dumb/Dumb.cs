@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Modding;
+﻿using Modding;
 using UnityEngine;
-using GlobalEnums;
-using HutongGames.PlayMaker.Actions;
-using HutongGames.PlayMaker;
 
 namespace Dumb
 {
@@ -15,16 +7,16 @@ namespace Dumb
     {
         public override string GetVersion()
         {
-            return "1.0";
+            return "1.1";
         }
         public override void Initialize()
         {
             On.tk2dBaseSprite.Awake += SetnoColor;
             On.tk2dBaseSprite.SetColors += SetnoCl;
-            ModHooks.ObjectPoolSpawnHook += ChangeMarkothNail;
+            ModHooks.ObjectPoolSpawnHook += ChangeShot;
         }
 
-        private GameObject ChangeMarkothNail(GameObject arg)
+        private GameObject ChangeShot(GameObject arg)
         {
            if(arg.name.StartsWith("Shot Markoth Nail"))
            {
@@ -50,7 +42,7 @@ namespace Dumb
         {
             On.tk2dBaseSprite.Awake -= SetnoColor;
             On.tk2dBaseSprite.SetColors -= SetnoCl;
-            ModHooks.ObjectPoolSpawnHook -= ChangeMarkothNail;
+            ModHooks.ObjectPoolSpawnHook -= ChangeShot;
 
         }
         private bool CheckSet(GameObject gameObject)
@@ -64,7 +56,7 @@ namespace Dumb
                 }
                 return true;
             }
-            if (gameObject.name.StartsWith("Flameball Grimmballoon")||gameObject.name=="Legs")
+            if (gameObject.name.StartsWith("Flameball Grimmballoon")||gameObject.name=="Legs"||gameObject.name.StartsWith("Black Knight"))
                 return true;
             return false;
         }
