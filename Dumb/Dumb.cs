@@ -54,6 +54,8 @@ namespace Dumb
                     if (gameObject.name.EndsWith("Slash") || gameObject.name.StartsWith("Fireball"))
                         return false;
                 }
+                if (gameObject.name.Contains("Shot Mantis Lord"))
+                    return false;
                 return true;
             }
             if (gameObject.name.StartsWith("Flameball Grimmballoon")||gameObject.name=="Legs"||gameObject.name.StartsWith("Black Knight"))
